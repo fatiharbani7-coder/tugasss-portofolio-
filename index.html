@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fatih Arbani | Junior Network Engineer</title>
+  <style>
+    /* =========================
+       RESET & GLOBAL
+    ========================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #07111f;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    /* =========================
+       NAVBAR
+    ========================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 10%;
+      background: rgba(7, 17, 31, 0.92);
+      border-bottom: 1px solid rgba(0, 183, 255, 0.15);
+      backdrop-filter: blur(10px);
+    }
+    .logo {
+      color: #00b7ff;
+      font-size: 1.3rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+    .nav-links a:hover {
+      color: #00b7ff;
+    }
+    /* =========================
+       HERO SECTION
+    ========================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 10% 70px;
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(0, 183, 255, 0.15),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 20% 80%,
+          rgba(0, 102, 255, 0.12),
+          transparent 30%
+        );
+    }
+    .hero-content {
+      max-width: 800px;
+    }
+    .status {
+      display: inline-block;
+      color: #00b7ff;
+      border: 1px solid rgba(0, 183, 255, 0.5);
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+    .hero h1 span {
+      color: #00b7ff;
+    }
+    .hero h2 {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: normal;
+      color: #94a3b8;
+      margin-bottom: 25px;
+    }
+    .hero-description {
+      max-width: 650px;
+      color: #cbd5e1;
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+    /* BUTTON */
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 13px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn-primary {
+      background: #00b7ff;
+      color: #06111e;
+    }
+    .btn-primary:hover {
+      background: #38c8ff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 183, 255, 0.25);
+    }
+    /* =========================
+       GENERAL SECTION
+    ========================== */
+    section {
+      padding: 90px 10%;
+    }
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 35px;
+    }
+    .section-title span {
+      color: #00b7ff;
+    }
+    /* =========================
+       ABOUT
+    ========================== */
+    .about-card {
+      max-width: 900px;
+      background: #0b1b2d;
+      border: 1px solid rgba(0, 183, 255, 0.15);
+      border-radius: 16px;
+      padding: 30px;
+    }
+    .about-card p {
+      color: #cbd5e1;
+    }
+    /* =========================
+       PROFILE
+    ========================== */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .profile-card {
+      background: #0b1b2d;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 25px;
+      transition: 0.3s;
+    }
+    .profile-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 183, 255, 0.5);
+    }
+    .profile-card small {
+      color: #64748b;
+    }
+    .profile-card h3 {
+      margin-top: 8px;
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+    /* =========================
+       SKILLS
+    ========================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+    .skill-card {
+      background: #0b1b2d;
+      border-radius: 14px;
+      padding: 25px;
+      border: 1px solid rgba(0, 183, 255, 0.1);
+      transition: 0.3s;
+    }
+    .skill-card:hover {
+      transform: translateY(-7px);
+      border-color: #00b7ff;
+    }
+    .skill-icon {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .skill-card h3 {
+      color: #00b7ff;
+      margin-bottom: 10px;
+    }
+    .skill-card p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+    /* =========================
+       PORTFOLIO / GOALS
+    ========================== */
+    .portfolio-card {
+      background: linear-gradient(135deg, #0b1b2d, #0a1625);
+      border: 1px solid rgba(0, 183, 255, 0.15);
+      border-radius: 16px;
+      padding: 30px;
+    }
+    .portfolio-card h3 {
+      color: #00b7ff;
+      margin-bottom: 15px;
+    }
+    .portfolio-card p {
+      color: #cbd5e1;
+    }
+    /* =========================
+       CONTACT
+    ========================== */
+    .contact {
+      text-align: center;
+      background: #0b1b2d;
+    }
+    .contact p {
+      color: #94a3b8;
+      margin-bottom: 25px;
+    }
+    /* =========================
+       FOOTER
+    ========================== */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #050c16;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 6%;
+      }
+      .nav-links {
+        gap: 12px;
+      }
+      .nav-links a {
+        font-size: 0.8rem;
+      }
+      section {
+        padding: 70px 6%;
+      }
+      .hero {
+        padding: 110px 6% 60px;
+      }
+    }
+    @media (max-width: 480px) {
+      .nav-links {
+        display: none;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+  <header class="navbar">
+    <div class="logo">FA.NETWORK</div>
+    <ul class="nav-links">
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#profil">Profil</a></li>
+      <li><a href="#keahlian">Keahlian</a></li>
+      <li><a href="#portofolio">Portofolio</a></li>
+    </ul>
+  </header>
+  <!-- =========================
+       HERO
+  ========================== -->
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="status">
+          ● JUNIOR NETWORK ENGINEER
+        </div>
+        <h1>
+          Fatih <span>Arbani</span>
+        </h1>
+        <h2>
+          Student of Computer & Network Engineering
+        </h2>
+        <p class="hero-description">
+          Seorang pelajar TJKT yang memiliki ketertarikan dalam
+          jaringan komputer, konfigurasi perangkat jaringan,
+          troubleshooting, dan teknologi telekomunikasi.
+        </p>
+        <a href="#tentang" class="btn btn-primary">
+          Lihat Profil Saya
+        </a>
+      </div>
+    </section>
+    <!-- =========================
+         ABOUT
+    ========================== -->
+    <section id="tentang">
+      <h2 class="section-title">
+        Tentang <span>Saya</span>
+      </h2>
+      <div class="about-card">
+        <p>
+          Halo, saya <strong>Fatih Arbani</strong>. Saya adalah siswa
+          kelas <strong>10 TJKT</strong> yang sedang mempelajari bidang
+          <strong>Teknik Jaringan Komputer dan Telekomunikasi</strong>.
+          Saya memiliki minat untuk terus mengembangkan pengetahuan
+          dan keterampilan dalam dunia jaringan komputer sebagai
+          seorang <strong>Junior Network Engineer</strong>.
+        </p>
+      </div>
+    </section>
+    <!-- =========================
+         PROFILE
+    ========================== -->
+    <section id="profil">
+      <h2 class="section-title">
+        Profile <span>Information</span>
+      </h2>
+      <div class="profile-grid">
+        <div class="profile-card">
+          <small>Nama</small>
+          <h3>Fatih Arbani</h3>
+        </div>
+        <div class="profile-card">
+          <small>Kelas</small>
+          <h3>10 TJKT</h3>
+        </div>
+        <div class="profile-card">
+          <small>Jurusan</small>
+          <h3>TJKT</h3>
+        </div>
+        <div class="profile-card">
+          <small>Program Keahlian</small>
+          <h3>Teknik Jaringan Komputer dan Telekomunikasi</h3>
+        </div>
+      </div>
+    </section>
+    <!-- =========================
+         SKILLS
+    ========================== -->
+    <section id="keahlian">
+      <h2 class="section-title">
+        Technical <span>Skills</span>
+      </h2>
+      <div class="skills-grid">
+        <article class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <h3>Computer Networking</h3>
+          <p>
+            Mempelajari dasar komunikasi dan koneksi antar perangkat
+            dalam jaringan komputer.
+          </p>
+        </article>
+        <article class="skill-card">
+          <div class="skill-icon">📡</div>
+          <h3>IP Addressing</h3>
+          <p>
+            Mempelajari IP Address, subnetting, dan konfigurasi dasar
+            jaringan.
+          </p>
+        </article>
+        <article class="skill-card">
+          <div class="skill-icon">🔧</div>
+          <h3>Troubleshooting</h3>
+          <p>
+            Menganalisis dan mencari solusi terhadap permasalahan dasar
+            pada jaringan komputer.
+          </p>
+        </article>
+        <article class="skill-card">
+          <div class="skill-icon">🖥️</div>
+          <h3>Network Devices</h3>
+          <p>
+            Mempelajari perangkat jaringan seperti router, switch,
+            access point, dan perangkat pendukung lainnya.
+          </p>
+        </article>
+      </div>
+    </section>
+    <!-- =========================
+         PORTFOLIO
+    ========================== -->
+    <section id="portofolio">
+      <h2 class="section-title">
+        My <span>Portfolio Journey</span>
+      </h2>
+      <div class="portfolio-card">
+        <h3>Junior Network Engineer</h3>
+        <p>
+          Saat ini saya sedang membangun pengetahuan dan pengalaman
+          dalam bidang jaringan komputer. Tujuan saya adalah terus
+          belajar mengenai konfigurasi jaringan, perangkat jaringan,
+          keamanan dasar, dan troubleshooting untuk berkembang menjadi
+          seorang Network Engineer yang profesional.
+        </p>
+      </div>
+    </section>
+    <!-- =========================
+         CONTACT
+    ========================== -->
+    <section class="contact">
+      <h2 class="section-title">
+        Let's <span>Connect</span>
+      </h2>
+      <p>
+        Terus belajar, membangun koneksi, dan berkembang di dunia
+        jaringan komputer dan telekomunikasi.
+      </p>
+      <a href="mailto:email@example.com" class="btn btn-primary">
+        Hubungi Saya
+      </a>
+    </section>
+  </main>
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer>
+    © 2026 Fatih Arbani — Junior Network Engineer Portfolio
+  </footer>
+</body>
+</html>
